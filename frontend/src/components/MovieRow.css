@@ -1,0 +1,1169 @@
+/* =========================================================
+   FLIXAI — CINEMATIC MOVIE CARDS
+   ========================================================= */
+
+.movie-section {
+  position: relative;
+  margin-bottom: 76px;
+}
+
+.movie-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.movie-section-header h2 {
+  margin: 0;
+  color: #f8f7ff;
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
+.movie-section-header p {
+  margin: 7px 0 0;
+  color: #817b91;
+  font-size: 13px;
+}
+
+
+/* =========================================================
+   ROW
+   ========================================================= */
+
+.movie-row-wrapper {
+  position: relative;
+  overflow: visible;
+}
+
+.movie-row {
+  display: flex;
+  gap: 28px;
+
+  overflow-x: auto;
+  overflow-y: visible;
+
+  padding: 8px 4px 28px;
+
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+.movie-row::-webkit-scrollbar {
+  display: none;
+}
+
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.movie-card {
+  position: relative;
+
+  flex: 0 0 306px;
+  width: 306px;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.35s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-9px);
+  z-index: 5;
+}
+
+
+/* =========================================================
+   POSTER
+   ========================================================= */
+
+.movie-card-poster {
+  position: relative;
+
+  width: 100%;
+  height: 432px;
+
+  overflow: hidden;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #181327,
+      #0b0911
+    );
+
+  border: 1px solid rgba(167, 139, 250, 0.10);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.30),
+    0 4px 12px rgba(0, 0, 0, 0.20);
+
+  transition:
+    border-color 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.movie-card:hover .movie-card-poster {
+  border-color: rgba(167, 139, 250, 0.40);
+
+  box-shadow:
+    0 25px 65px rgba(0, 0, 0, 0.50),
+    0 0 0 1px rgba(139, 92, 246, 0.15),
+    0 0 42px rgba(139, 92, 246, 0.18);
+}
+
+
+/* =========================================================
+   POSTER IMAGE
+   ========================================================= */
+
+.movie-card-poster img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+
+  transform: scale(1.001);
+
+  transition:
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.5s ease;
+}
+
+.movie-card:hover .movie-card-poster img {
+  transform: scale(1.07);
+
+  filter:
+    brightness(0.72)
+    saturate(1.08);
+}
+
+
+/* =========================================================
+   CINEMATIC GRADIENT
+   ========================================================= */
+
+.movie-card-gradient {
+  position: absolute;
+  inset: 0;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 4, 10, 0.05) 20%,
+      rgba(5, 4, 10, 0.08) 45%,
+      rgba(5, 4, 10, 0.82) 100%
+    );
+}
+
+
+/* =========================================================
+   PURPLE EDGE LIGHT
+   ========================================================= */
+
+.movie-card-poster::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  z-index: 2;
+
+  pointer-events: none;
+
+  border-radius: inherit;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(196, 181, 253, 0.18),
+      transparent 22%,
+      transparent 72%,
+      rgba(217, 70, 239, 0.10)
+    );
+
+  opacity: 0;
+
+  transition: opacity 0.35s ease;
+}
+
+.movie-card:hover .movie-card-poster::before {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   RATING
+   ========================================================= */
+
+.movie-rating {
+  position: absolute;
+
+  left: 14px;
+  bottom: 14px;
+
+  z-index: 4;
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  padding: 7px 10px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 9px;
+
+  color: #ffffff;
+
+  background:
+    rgba(7, 6, 12, 0.72);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  font-size: 12px;
+  font-weight: 700;
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.movie-rating span {
+  color: #facc15;
+
+  font-size: 13px;
+
+  text-shadow:
+    0 0 10px rgba(250, 204, 21, 0.35);
+}
+
+
+/* =========================================================
+   HOVER PANEL
+   ========================================================= */
+
+.movie-hover {
+  position: absolute;
+  inset: 0;
+
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 20px;
+
+  opacity: 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(9, 7, 16, 0.30) 0%,
+      rgba(9, 7, 16, 0.15) 30%,
+      rgba(9, 7, 16, 0.92) 100%
+    );
+
+  transition:
+    opacity 0.30s ease;
+}
+
+.movie-card:hover .movie-hover {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   HOVER ACTIONS
+   ========================================================= */
+
+.movie-hover-actions {
+  display: flex;
+  gap: 9px;
+
+  transform: translateY(-8px);
+
+  opacity: 0;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.movie-card:hover .movie-hover-actions {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.card-action {
+  width: 40px;
+  height: 40px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+
+  color: #ffffff;
+
+  background:
+    rgba(18, 14, 29, 0.78);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  font-size: 15px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card-action:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(196, 181, 253, 0.45);
+
+  background:
+    rgba(139, 92, 246, 0.28);
+
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.18);
+}
+
+.card-action.play {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      135deg,
+      #8b5cf6,
+      #6d28d9
+    );
+
+  border-color: rgba(196, 181, 253, 0.35);
+
+  box-shadow:
+    0 0 22px rgba(139, 92, 246, 0.25);
+}
+
+
+/* =========================================================
+   HOVER INFORMATION
+   ========================================================= */
+
+.movie-hover-info {
+  transform: translateY(10px);
+
+  opacity: 0;
+
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease;
+}
+
+.movie-card:hover .movie-hover-info {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.movie-hover-info strong {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #ffffff;
+
+  font-size: 17px;
+  font-weight: 800;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  color: #b6afc4;
+
+  font-size: 11px;
+}
+
+.match-badge {
+  color: #b9fbc0;
+
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   CARD INFORMATION BELOW POSTER
+   ========================================================= */
+
+.movie-card-info {
+  padding: 14px 4px 0;
+}
+
+.movie-card-info h3 {
+  margin: 0;
+
+  color: #eeeaf5;
+
+  font-size: 15px;
+  font-weight: 750;
+
+  line-height: 1.35;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  transition: color 0.25s ease;
+}
+
+.movie-card:hover .movie-card-info h3 {
+  color: #c4b5fd;
+}
+
+.movie-card-subtitle {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 6px;
+
+  color: #777182;
+
+  font-size: 12px;
+}
+
+.movie-card-subtitle .dot {
+  color: #8b5cf6;
+}
+
+
+/* =========================================================
+   ROW ARROWS
+   ========================================================= */
+
+.movie-row-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.row-arrow {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(167, 139, 250, 0.14);
+  border-radius: 50%;
+
+  color: #ddd6fe;
+
+  background:
+    rgba(18, 14, 28, 0.82);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  font-size: 25px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.row-arrow:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(167, 139, 250, 0.40);
+
+  background:
+    rgba(139, 92, 246, 0.16);
+
+  box-shadow:
+    0 0 24px rgba(139, 92, 246, 0.16);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.movie-section-empty {
+  min-height: 180px;
+}
+
+.movie-section-empty .movie-section-header {
+  margin-bottom: 0;
+}
+
+
+/* =========================================================
+   SKELETON
+   ========================================================= */
+
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-poster {
+  width: 100%;
+  height: 432px;
+
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #100d18 8%,
+      #1b1628 18%,
+      #100d18 33%
+    );
+
+  background-size: 200% 100%;
+
+  animation: movieSkeleton 1.6s linear infinite;
+}
+
+.skeleton-line {
+  border-radius: 6px;
+
+  background:
+    linear-gradient(
+      110deg,
+      #100d18 8%,
+      #1b1628 18%,
+      #100d18 33%
+    );
+
+  background-size: 200% 100%;
+
+  animation: movieSkeleton 1.6s linear infinite;
+}
+
+.skeleton-title {
+  width: 72%;
+  height: 16px;
+  margin-top: 14px;
+}
+
+.skeleton-subtitle {
+  width: 45%;
+  height: 11px;
+  margin-top: 8px;
+}
+
+@keyframes movieSkeleton {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.movie-placeholder {
+  position: absolute;
+  inset: 0;
+
+  display: none;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 12px;
+
+  padding: 30px;
+
+  text-align: center;
+
+  color: #aaa1bc;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      rgba(139, 92, 246, 0.20),
+      transparent 35%
+    ),
+    linear-gradient(
+      145deg,
+      #171127,
+      #08070c
+    );
+}
+
+.placeholder-symbol {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 16px;
+
+  color: #c4b5fd;
+
+  background: rgba(139, 92, 246, 0.10);
+
+  box-shadow:
+    0 0 25px rgba(139, 92, 246, 0.15);
+
+  font-size: 22px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1200px) {
+  .movie-card {
+    flex-basis: 260px;
+    width: 260px;
+  }
+
+  .movie-card-poster,
+  .skeleton-poster {
+    height: 370px;
+  }
+}
+
+@media (max-width: 900px) {
+  .movie-section {
+    margin-bottom: 56px;
+  }
+
+  .movie-card {
+    flex-basis: 220px;
+    width: 220px;
+  }
+
+  .movie-card-poster,
+  .skeleton-poster {
+    height: 315px;
+  }
+
+  .movie-row {
+    gap: 18px;
+  }
+
+  .movie-section-header h2 {
+    font-size: 21px;
+  }
+
+  .row-arrow {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-card {
+    flex-basis: 175px;
+    width: 175px;
+  }
+
+  .movie-card-poster,
+  .skeleton-poster {
+    height: 255px;
+    border-radius: 14px;
+  }
+
+  .movie-row {
+    gap: 14px;
+  }
+
+  .movie-section-header {
+    align-items: center;
+  }
+
+  .movie-section-header p {
+    font-size: 11px;
+  }
+
+  .movie-row-controls {
+    display: none;
+  }
+
+  .movie-card-info h3 {
+    font-size: 13px;
+  }
+}
+/* =========================================================
+   FLIXAI MOVIE DETAILS MODAL
+   ========================================================= */
+
+.movie-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(139, 92, 246, 0.12),
+      transparent 35%
+    ),
+    rgba(2, 1, 7, 0.82);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  animation: modalFadeIn 0.22s ease;
+}
+
+.movie-modal {
+  position: relative;
+
+  width: min(980px, 92vw);
+  max-height: 88vh;
+
+  overflow: hidden;
+
+  border-radius: 24px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #161025 0%,
+      #0d0a16 55%,
+      #09070f 100%
+    );
+
+  border: 1px solid rgba(167, 139, 250, 0.18);
+
+  box-shadow:
+    0 40px 100px rgba(0, 0, 0, 0.70),
+    0 0 80px rgba(139, 92, 246, 0.10);
+
+  animation: modalScaleIn 0.25s ease;
+}
+
+.movie-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+
+  z-index: 20;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+
+  background: rgba(5, 3, 10, 0.72);
+  color: #ffffff;
+
+  font-size: 25px;
+  line-height: 1;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(12px);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.movie-modal-close:hover {
+  transform: rotate(90deg);
+
+  background: rgba(139, 92, 246, 0.22);
+
+  border-color: rgba(167, 139, 250, 0.35);
+}
+
+
+/* HERO */
+
+.movie-modal-hero {
+  position: relative;
+
+  min-height: 500px;
+
+  overflow: hidden;
+}
+
+.movie-modal-backdrop-image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  opacity: 0.58;
+}
+
+.movie-modal-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(7, 4, 12, 0.98) 0%,
+      rgba(7, 4, 12, 0.82) 38%,
+      rgba(7, 4, 12, 0.35) 75%,
+      rgba(7, 4, 12, 0.72) 100%
+    ),
+    linear-gradient(
+      0deg,
+      #09070f 0%,
+      transparent 45%
+    );
+}
+
+.movie-modal-content {
+  position: relative;
+  z-index: 2;
+
+  min-height: 500px;
+
+  display: flex;
+  align-items: flex-end;
+
+  gap: 34px;
+
+  padding: 48px;
+}
+
+.movie-modal-poster {
+  flex: 0 0 190px;
+
+  width: 190px;
+  height: 285px;
+
+  overflow: hidden;
+
+  border-radius: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  box-shadow:
+    0 25px 50px rgba(0, 0, 0, 0.55);
+}
+
+.movie-modal-poster img {
+  width: 100%;
+  height: 100%;
+
+  display: block;
+
+  object-fit: cover;
+}
+
+.movie-modal-info {
+  max-width: 600px;
+}
+
+.modal-eyebrow {
+  display: inline-block;
+
+  margin-bottom: 12px;
+
+  color: #b9a7ff;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.movie-modal-info h2 {
+  margin: 0 0 14px;
+
+  color: #ffffff;
+
+  font-size: clamp(34px, 4vw, 58px);
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+}
+
+.modal-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+
+  color: #a29bad;
+
+  font-size: 14px;
+}
+
+.modal-rating {
+  color: #ffd84d;
+}
+
+.movie-modal-info p {
+  margin: 0;
+
+  color: #c2bdca;
+
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+
+/* ACTIONS */
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+
+  margin-top: 26px;
+}
+
+.modal-play,
+.modal-list {
+  min-height: 46px;
+
+  padding: 0 22px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.modal-play {
+  border: none;
+
+  background: #ffffff;
+  color: #08060d;
+}
+
+.modal-list {
+  border: 1px solid rgba(167, 139, 250, 0.20);
+
+  background: rgba(139, 92, 246, 0.10);
+  color: #eeeaff;
+}
+
+.modal-play:hover,
+.modal-list:hover {
+  transform: translateY(-2px);
+}
+
+
+/* FOOTER */
+
+.movie-modal-bottom {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  padding: 18px 30px;
+
+  border-top: 1px solid rgba(167, 139, 250, 0.08);
+
+  background: rgba(10, 7, 16, 0.75);
+}
+
+.movie-modal-bottom span {
+  color: #a78bfa;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 0.12em;
+}
+
+.movie-modal-bottom p {
+  margin: 0;
+
+  color: #777080;
+
+  font-size: 12px;
+}
+
+
+/* ANIMATION */
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+  .movie-modal-backdrop {
+    padding: 16px;
+  }
+
+  .movie-modal {
+    width: 100%;
+    max-height: 92vh;
+    overflow-y: auto;
+  }
+
+  .movie-modal-content {
+    min-height: 0;
+
+    flex-direction: column;
+    align-items: flex-start;
+
+    padding: 28px;
+  }
+
+  .movie-modal-poster {
+    width: 130px;
+    height: 195px;
+  }
+
+  .movie-modal-info h2 {
+    font-size: 36px;
+  }
+
+  .movie-modal-bottom {
+    padding: 16px 24px;
+  }
+}
+
+/* Trailer player */
+.trailer-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(0, 0, 0, 0.94);
+}
+
+.trailer-container {
+  position: relative;
+  width: min(960px, 100%);
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6);
+}
+
+.trailer-container iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.trailer-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.78);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.modal-play:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+@media (max-width: 600px) {
+  .trailer-overlay {
+    padding: 10px;
+  }
+
+  .trailer-container {
+    border-radius: 8px;
+  }
+}

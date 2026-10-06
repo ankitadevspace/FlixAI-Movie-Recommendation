@@ -1,0 +1,796 @@
+/* =========================================================
+   FLIXAI — COSMIC SIDEBAR
+========================================================= */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 250px;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 30px 18px 20px;
+
+  z-index: 100;
+
+  overflow: hidden;
+
+  color: #f7f4ff;
+
+  background:
+    radial-gradient(
+      circle at 20% 5%,
+      rgba(139, 92, 246, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 100% 70%,
+      rgba(217, 70, 239, 0.07),
+      transparent 35%
+    ),
+    linear-gradient(
+      180deg,
+      #0b0813 0%,
+      #07060c 55%,
+      #050409 100%
+    );
+
+  border-right:
+    1px solid rgba(167, 139, 250, 0.10);
+
+  box-shadow:
+    15px 0 50px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+
+/* =========================================================
+   SUBTLE SIDEBAR LIGHT
+========================================================= */
+
+.sidebar::before {
+  content: "";
+
+  position: absolute;
+
+  width: 220px;
+  height: 220px;
+
+  top: -100px;
+  left: -80px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.18),
+      transparent 68%
+    );
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+.sidebar::after {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -100px;
+  bottom: 80px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(217, 70, 239, 0.10),
+      transparent 70%
+    );
+
+  filter: blur(30px);
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   FLIXAI — FUTURISTIC BRAND MARK
+   ========================================================= */
+
+.logo {
+  position: relative;
+  z-index: 5;
+
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin: 2px 10px 34px;
+
+  color: #ffffff;
+
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 26px;
+  font-weight: 950;
+  letter-spacing: -0.08em;
+  line-height: 1;
+
+  user-select: none;
+
+  transform-style: preserve-3d;
+
+  text-shadow:
+    0 2px 0 rgba(255,255,255,0.04),
+    0 10px 30px rgba(0,0,0,0.35);
+}
+
+
+/* FLIX */
+
+.logo::first-letter {
+  color: #ffffff;
+}
+
+
+/* AI */
+
+.logo span {
+  position: relative;
+
+  color: transparent;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #ddd6fe 18%,
+      #c4b5fd 38%,
+      #a78bfa 58%,
+      #8b5cf6 78%,
+      #d946ef 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  text-shadow:
+    0 0 18px rgba(139,92,246,0.35),
+    0 0 45px rgba(217,70,239,0.12);
+}
+
+
+/* glowing line underneath */
+
+.logo::after {
+  content: "";
+
+  position: absolute;
+
+  left: 2px;
+  bottom: -13px;
+
+  width: 76px;
+  height: 2px;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #8b5cf6 0%,
+      #a78bfa 35%,
+      #d946ef 70%,
+      transparent 100%
+    );
+
+  box-shadow:
+    0 0 8px rgba(139,92,246,0.8),
+    0 0 22px rgba(217,70,239,0.35);
+
+  opacity: 0.9;
+}
+
+
+/* little light point */
+
+.logo span::after {
+  content: "";
+
+  position: absolute;
+
+  width: 4px;
+  height: 4px;
+
+  right: -8px;
+  top: 3px;
+
+  border-radius: 50%;
+
+  background: #c4b5fd;
+
+  box-shadow:
+    0 0 8px #a78bfa,
+    0 0 18px rgba(217,70,239,0.8);
+
+  animation: logoPulse 2.8s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.25);
+  }
+}
+
+
+/* subtle hover depth */
+
+.sidebar:hover .logo {
+  transform:
+    translateZ(12px);
+
+  transition:
+    transform 0.35s ease;
+}
+
+.sidebar:hover .logo span {
+  filter:
+    brightness(1.12);
+}
+
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.sidebar-search {
+  position: relative;
+  z-index: 2;
+
+  height: 43px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  margin:
+    28px
+    2px
+    30px;
+
+  padding:
+    0
+    13px;
+
+  border:
+    1px solid
+    rgba(167, 139, 250, 0.10);
+
+  border-radius: 12px;
+
+  color: #777184;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  box-shadow:
+    inset 0 1px rgba(255, 255, 255, 0.025);
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.sidebar-search:hover {
+  color: #c8c0d8;
+
+  background:
+    rgba(139, 92, 246, 0.06);
+
+  border-color:
+    rgba(167, 139, 250, 0.22);
+
+  box-shadow:
+    0 0 25px rgba(139, 92, 246, 0.07);
+}
+
+.sidebar-search span:first-child {
+  font-size: 20px;
+
+  color: #a78bfa;
+
+  line-height: 1;
+}
+
+.sidebar-search span:last-child {
+  font-size: 12px;
+
+  letter-spacing: 0.01em;
+}
+
+
+/* =========================================================
+   NAV LABELS
+========================================================= */
+
+.nav-label {
+  position: relative;
+  z-index: 2;
+
+  margin:
+    0
+    10px
+    10px;
+
+  color: #635d70;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.20em;
+}
+
+.library-label {
+  margin-top: 31px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar nav {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 4px;
+}
+
+
+/* =========================================================
+   NAV ITEM
+========================================================= */
+
+.nav-item {
+  position: relative;
+
+  width: 100%;
+  min-height: 44px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 13px;
+
+  padding:
+    0
+    13px;
+
+  border: 1px solid transparent;
+
+  border-radius: 12px;
+
+  color: #817a8f;
+
+  background: transparent;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* icon */
+
+.nav-item > span {
+  width: 21px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #716a7e;
+
+  font-size: 17px;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease,
+    text-shadow 0.25s ease;
+}
+
+
+/* hover */
+
+.nav-item:hover {
+  color: #e9e4f4;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(139, 92, 246, 0.11),
+      rgba(139, 92, 246, 0.025)
+    );
+
+  border-color:
+    rgba(167, 139, 250, 0.08);
+
+  transform: translateX(3px);
+}
+
+.nav-item:hover > span {
+  color: #b9a4ff;
+
+  transform: scale(1.08);
+
+  text-shadow:
+    0 0 12px rgba(167, 139, 250, 0.55);
+}
+
+
+/* =========================================================
+   ACTIVE ITEM
+========================================================= */
+
+.nav-item.active {
+  color: #ffffff;
+
+  background:
+    linear-gradient(
+      100deg,
+      rgba(139, 92, 246, 0.20),
+      rgba(139, 92, 246, 0.065)
+    );
+
+  border-color:
+    rgba(167, 139, 250, 0.16);
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.12),
+    inset 0 1px rgba(255, 255, 255, 0.035);
+}
+
+
+/* purple active indicator */
+
+.nav-item.active::before {
+  content: "";
+
+  position: absolute;
+
+  left: -1px;
+  top: 9px;
+
+  width: 3px;
+  height: 26px;
+
+  border-radius: 0 4px 4px 0;
+
+  background:
+    linear-gradient(
+      180deg,
+      #c4b5fd,
+      #8b5cf6,
+      #d946ef
+    );
+
+  box-shadow:
+    0 0 14px rgba(139, 92, 246, 0.75);
+}
+
+
+.nav-item.active > span {
+  color: #c4b5fd;
+
+  text-shadow:
+    0 0 15px rgba(167, 139, 250, 0.60);
+}
+
+
+/* =========================================================
+   AI PROMO CARD
+========================================================= */
+
+.sidebar-ai {
+  position: relative;
+  z-index: 2;
+
+  margin:
+    auto
+    2px
+    15px;
+
+  padding: 18px;
+
+  border:
+    1px solid
+    rgba(167, 139, 250, 0.14);
+
+  border-radius: 17px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(139, 92, 246, 0.13),
+      rgba(217, 70, 239, 0.045) 48%,
+      rgba(255, 255, 255, 0.018)
+    );
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.20),
+    inset 0 1px rgba(255, 255, 255, 0.045);
+
+  backdrop-filter: blur(15px);
+}
+
+
+/* glowing orb */
+
+.sidebar-ai::before {
+  content: "";
+
+  position: absolute;
+
+  width: 110px;
+  height: 110px;
+
+  top: -65px;
+  right: -40px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.24),
+      transparent 70%
+    );
+
+  filter: blur(5px);
+}
+
+
+/* =========================================================
+   AI SPARK
+========================================================= */
+
+.sidebar-ai .spark {
+  width: 31px;
+  height: 31px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-bottom: 12px;
+
+  border-radius: 9px;
+
+  color: #ddd6fe;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(167, 139, 250, 0.25),
+      rgba(217, 70, 239, 0.12)
+    );
+
+  border:
+    1px solid
+    rgba(196, 181, 253, 0.18);
+
+  box-shadow:
+    0 0 20px rgba(139, 92, 246, 0.13);
+
+  font-size: 15px;
+}
+
+
+/* =========================================================
+   AI CARD TEXT
+========================================================= */
+
+.sidebar-ai strong {
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: #eeeaff;
+
+  font-size: 12px;
+  font-weight: 750;
+
+  letter-spacing: -0.01em;
+}
+
+.sidebar-ai p {
+  position: relative;
+  z-index: 2;
+
+  margin: 0;
+
+  max-width: 170px;
+
+  color: #81798f;
+
+  font-size: 10px;
+
+  line-height: 1.55;
+}
+
+
+/* =========================================================
+   BOTTOM STATUS
+========================================================= */
+
+.sidebar::marker {
+  display: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+}
+/* =========================================================
+   FLIXAI — 3D ENERGY ORBIT
+   ========================================================= */
+
+.logo::after {
+  content: "";
+
+  position: absolute;
+
+  left: 52px;
+  bottom: -15px;
+
+  width: 92px;
+  height: 18px;
+
+  border-radius: 50%;
+
+  border: 1px solid rgba(167, 139, 250, 0.55);
+
+  border-top-color: rgba(217, 70, 239, 0.75);
+  border-left-color: transparent;
+
+  background: transparent;
+
+  transform:
+    perspective(80px)
+    rotateX(58deg)
+    rotateZ(-4deg);
+
+  box-shadow:
+    0 0 6px rgba(139, 92, 246, 0.65),
+    0 0 18px rgba(139, 92, 246, 0.28),
+    inset 0 0 8px rgba(217, 70, 239, 0.12);
+
+  opacity: 0.9;
+
+  animation: logoOrbit 5s ease-in-out infinite;
+}
+
+
+/* second energy trail */
+
+.logo::before {
+  content: "";
+
+  position: absolute;
+
+  left: 61px;
+  bottom: -10px;
+
+  width: 70px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      ellipse,
+      rgba(167, 139, 250, 0.8) 0%,
+      rgba(139, 92, 246, 0.45) 30%,
+      rgba(217, 70, 239, 0.2) 55%,
+      transparent 75%
+    );
+
+  filter: blur(3px);
+
+  transform:
+    rotate(-3deg);
+
+  opacity: 0.7;
+
+  animation: energyPulse 3s ease-in-out infinite;
+}
+
+
+@keyframes logoOrbit {
+
+  0%,
+  100% {
+    transform:
+      perspective(80px)
+      rotateX(58deg)
+      rotateZ(-4deg)
+      translateX(0)
+      scaleX(1);
+  }
+
+  50% {
+    transform:
+      perspective(80px)
+      rotateX(58deg)
+      rotateZ(-4deg)
+      translateX(4px)
+      scaleX(1.08);
+  }
+}
+
+
+@keyframes energyPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform:
+      rotate(-3deg)
+      scaleX(0.85);
+  }
+
+  50% {
+    opacity: 0.9;
+    transform:
+      rotate(-3deg)
+      scaleX(1.08);
+  }
+}

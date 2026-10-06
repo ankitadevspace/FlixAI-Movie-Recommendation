@@ -1,0 +1,962 @@
+/* =========================================================
+   FLIXAI CINEMATIC HERO
+========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 650px;
+
+  margin: 0;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+
+  isolation: isolate;
+
+  background:
+    radial-gradient(
+      circle at 70% 40%,
+      rgba(139, 92, 246, 0.10),
+      transparent 35%
+    ),
+    #05040a;
+}
+
+
+/* =========================================================
+   BACKGROUND IMAGE
+========================================================= */
+
+.hero-background {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -5;
+
+  background-image: var(--hero-image);
+
+  background-size: cover;
+  background-position: center 25%;
+
+  transform: scale(1.015);
+
+  filter:
+    saturate(0.82)
+    contrast(1.05);
+
+  transition:
+    transform 1.2s ease,
+    opacity 0.8s ease;
+}
+
+
+/* subtle cinematic movement */
+
+.hero:hover .hero-background {
+  transform: scale(1.035);
+}
+
+
+/* =========================================================
+   DARK CINEMATIC OVERLAY
+========================================================= */
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -4;
+
+  background:
+    linear-gradient(
+      90deg,
+      #05040a 0%,
+      rgba(5, 4, 10, 0.96) 17%,
+      rgba(5, 4, 10, 0.78) 36%,
+      rgba(5, 4, 10, 0.28) 65%,
+      rgba(5, 4, 10, 0.12) 100%
+    );
+}
+
+
+/* top dark fade */
+
+.hero::after {
+  content: "";
+
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -3;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(5, 4, 10, 0.72) 0%,
+      transparent 25%,
+      transparent 67%,
+      #05040a 100%
+    );
+}
+
+
+/* =========================================================
+   PURPLE ATMOSPHERE
+========================================================= */
+
+.hero-purple-glow {
+  position: absolute;
+
+  z-index: -2;
+
+  left: 32%;
+  top: 8%;
+
+  width: 420px;
+  height: 420px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139, 92, 246, 0.16),
+      rgba(139, 92, 246, 0.04) 45%,
+      transparent 72%
+    );
+
+  filter: blur(30px);
+
+  pointer-events: none;
+
+  animation: heroGlow 7s ease-in-out infinite alternate;
+}
+
+@keyframes heroGlow {
+
+  from {
+    transform: translate3d(-15px, 0, 0);
+    opacity: 0.65;
+  }
+
+  to {
+    transform: translate3d(25px, 12px, 0);
+    opacity: 1;
+  }
+
+}
+
+
+/* =========================================================
+   VIGNETTE
+========================================================= */
+
+.hero-vignette {
+  position: absolute;
+
+  inset: 0;
+
+  z-index: -1;
+
+  pointer-events: none;
+
+  box-shadow:
+    inset 0 0 150px rgba(0, 0, 0, 0.50);
+}
+
+
+/* =========================================================
+   FLOATING ORBS
+========================================================= */
+
+.hero-orb {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  opacity: 0.5;
+
+  filter: blur(1px);
+}
+
+.hero-orb-one {
+  width: 5px;
+  height: 5px;
+
+  top: 28%;
+  left: 58%;
+
+  background: #c4b5fd;
+
+  box-shadow:
+    0 0 18px rgba(196,181,253,0.9);
+
+  animation:
+    heroFloatOne 5s ease-in-out infinite;
+}
+
+.hero-orb-two {
+  width: 3px;
+  height: 3px;
+
+  top: 52%;
+  left: 70%;
+
+  background: #d946ef;
+
+  box-shadow:
+    0 0 15px rgba(217,70,239,0.8);
+
+  animation:
+    heroFloatTwo 6s ease-in-out infinite;
+}
+
+@keyframes heroFloatOne {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.35;
+  }
+
+  50% {
+    transform: translateY(-18px);
+    opacity: 0.9;
+  }
+
+}
+
+@keyframes heroFloatTwo {
+
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.25;
+  }
+
+  50% {
+    transform: translate(-15px, 12px);
+    opacity: 0.8;
+  }
+
+}
+
+
+/* =========================================================
+   HERO CONTENT
+========================================================= */
+
+.hero-content {
+  position: relative;
+
+  z-index: 5;
+
+  width: min(760px, 70%);
+
+  margin-left: 44px;
+
+  padding-top: 45px;
+  padding-bottom: 80px;
+}
+
+
+/* =========================================================
+   AI KICKER
+========================================================= */
+
+.hero-kicker {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 20px;
+
+  padding: 7px 12px;
+
+  border-radius: 999px;
+
+  color: #c4b5fd;
+
+  background:
+    rgba(139, 92, 246, 0.08);
+
+  border:
+    1px solid rgba(167, 139, 250, 0.18);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.04),
+    0 0 25px rgba(139,92,246,0.05);
+
+  font-size: 10px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.17em;
+}
+
+.hero-kicker-icon {
+  color: #d8b4fe;
+
+  font-size: 13px;
+
+  text-shadow:
+    0 0 14px rgba(216,180,254,0.8);
+}
+
+
+/* =========================================================
+   TITLE
+========================================================= */
+
+.hero h1 {
+  max-width: 850px;
+
+  margin: 0 0 18px;
+
+  color: #ffffff;
+
+  font-size:
+    clamp(52px, 6.5vw, 92px);
+
+  font-weight: 950;
+
+  line-height: 0.92;
+
+  letter-spacing: -0.065em;
+
+  text-wrap: balance;
+
+  text-shadow:
+    0 12px 45px rgba(0,0,0,0.55);
+}
+
+
+/* =========================================================
+   META
+========================================================= */
+
+.hero-meta {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+
+  margin-bottom: 20px;
+}
+
+.hero-meta > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  min-height: 28px;
+
+  padding: 0 10px;
+
+  border-radius: 8px;
+
+  color: #a7a2b2;
+
+  background:
+    rgba(255,255,255,0.035);
+
+  border:
+    1px solid rgba(255,255,255,0.06);
+
+  font-size: 12px;
+
+  font-weight: 650;
+}
+
+.hero-match {
+  color: #67f5a5 !important;
+
+  background:
+    rgba(34,197,94,0.08) !important;
+
+  border-color:
+    rgba(34,197,94,0.15) !important;
+}
+
+.match-dot {
+  width: 6px;
+  height: 6px;
+
+  margin-right: 7px;
+
+  border-radius: 50%;
+
+  background: #4ade80;
+
+  box-shadow:
+    0 0 10px rgba(74,222,128,0.75);
+}
+
+.hero-rating span {
+  margin-right: 5px;
+
+  color: #facc15;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.hero-description {
+  max-width: 680px;
+
+  margin: 0 0 28px;
+
+  color: rgba(235,232,241,0.74);
+
+  font-size: 15px;
+
+  line-height: 1.7;
+
+  letter-spacing: -0.01em;
+
+  display: -webkit-box;
+
+-webkit-line-clamp: 3;
+line-clamp: 3;
+
+-webkit-box-orient: vertical;
+
+overflow: hidden;
+}
+
+
+/* =========================================================
+   ACTIONS
+========================================================= */
+
+.hero-actions {
+  display: flex;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.hero-actions button {
+  height: 48px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 0 20px;
+
+  border-radius: 13px;
+
+  cursor: pointer;
+
+  font-size: 13px;
+
+  font-weight: 800;
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.hero-actions button:hover {
+  transform: translateY(-3px);
+}
+
+
+/* primary */
+
+.primary-action {
+  color: #08070c;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #e9e4f2
+    );
+
+  border: 1px solid rgba(255,255,255,0.65);
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.25);
+}
+
+.primary-action:hover {
+  box-shadow:
+    0 14px 38px rgba(0,0,0,0.35),
+    0 0 25px rgba(255,255,255,0.08);
+}
+
+
+/* secondary */
+
+.secondary-action {
+  color: #eeeaf6;
+
+  background:
+    rgba(255,255,255,0.065);
+
+  border:
+    1px solid rgba(255,255,255,0.10);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.secondary-action:hover {
+  background:
+    rgba(139,92,246,0.14);
+
+  border-color:
+    rgba(167,139,250,0.28);
+
+  box-shadow:
+    0 0 25px rgba(139,92,246,0.10);
+}
+
+
+/* =========================================================
+   AI INSIGHT CARD
+========================================================= */
+
+.hero-ai-insight {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  width: min(390px, 100%);
+
+  margin-top: 28px;
+
+  padding: 13px 16px;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139,92,246,0.11),
+      rgba(255,255,255,0.035)
+    );
+
+  border:
+    1px solid rgba(167,139,250,0.14);
+
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.035),
+    0 12px 40px rgba(0,0,0,0.18);
+
+  backdrop-filter: blur(15px);
+
+  overflow: hidden;
+}
+
+.hero-ai-icon {
+  width: 35px;
+  height: 35px;
+
+  min-width: 35px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  color: #ddd6fe;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(139,92,246,0.30),
+      rgba(217,70,239,0.12)
+    );
+
+  border:
+    1px solid rgba(196,181,253,0.20);
+
+  box-shadow:
+    0 0 20px rgba(139,92,246,0.12);
+}
+
+.hero-ai-text {
+  min-width: 0;
+}
+
+.hero-ai-text > span {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: #bda9ff;
+
+  font-size: 8px;
+
+  font-weight: 850;
+
+  letter-spacing: 0.17em;
+}
+
+.hero-ai-text p {
+  margin: 0;
+
+  color: #9993a6;
+
+  font-size: 10px;
+
+  line-height: 1.45;
+}
+
+.hero-ai-pulse {
+  width: 6px;
+  height: 6px;
+
+  margin-left: auto;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #a78bfa;
+
+  box-shadow:
+    0 0 14px rgba(167,139,250,0.9);
+
+  animation: aiPulse 2s ease-in-out infinite;
+}
+
+@keyframes aiPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   BOTTOM FADE
+========================================================= */
+
+.hero-bottom-fade {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  height: 180px;
+
+  z-index: 4;
+
+  pointer-events: none;
+
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0%,
+      rgba(5,4,10,0.35) 35%,
+      #05040a 100%
+    );
+}
+
+
+/* =========================================================
+   LOADING STATE
+========================================================= */
+
+.hero-loading {
+  min-height: 650px;
+
+  background:
+    radial-gradient(
+      circle at 65% 45%,
+      rgba(139,92,246,0.12),
+      transparent 32%
+    ),
+    #05040a;
+}
+
+.hero-loading-orb {
+  position: absolute;
+
+  width: 240px;
+  height: 240px;
+
+  left: 55%;
+  top: 30%;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(139,92,246,0.18),
+      transparent 68%
+    );
+
+  filter: blur(20px);
+
+  animation: loadingPulse 2s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(0.9);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+
+}
+
+.hero-loading-content {
+  position: absolute;
+
+  left: 44px;
+  bottom: 120px;
+}
+
+.hero-loading-line {
+  height: 14px;
+
+  margin-bottom: 12px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,0.08),
+      rgba(139,92,246,0.12),
+      rgba(255,255,255,0.05)
+    );
+
+  background-size: 200% 100%;
+
+  animation: skeletonMove 1.6s linear infinite;
+}
+
+.hero-loading-line.small {
+  width: 150px;
+}
+
+.hero-loading-line.large {
+  width: 520px;
+  height: 70px;
+}
+
+.hero-loading-line.medium {
+  width: 380px;
+}
+
+@keyframes skeletonMove {
+
+  from {
+    background-position: 200% 0;
+  }
+
+  to {
+    background-position: -200% 0;
+  }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+  .hero-content {
+    width: 75%;
+
+    margin-left: 34px;
+  }
+
+  .hero h1 {
+    font-size: clamp(48px, 7vw, 76px);
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+  .hero {
+    min-height: 620px;
+
+    align-items: flex-end;
+  }
+
+  .hero-content {
+    width: 100%;
+
+    margin-left: 0;
+
+    padding:
+      80px
+      24px
+      90px;
+  }
+
+  .hero::before {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(5,4,10,0.18) 0%,
+        rgba(5,4,10,0.35) 35%,
+        rgba(5,4,10,0.94) 78%,
+        #05040a 100%
+      );
+  }
+
+  .hero-background {
+    background-position: center top;
+  }
+
+  .hero h1 {
+    font-size: clamp(46px, 12vw, 68px);
+  }
+
+  .hero-description {
+    max-width: 620px;
+
+    font-size: 13px;
+  }
+
+  .hero-ai-insight {
+    width: 100%;
+    max-width: 390px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .hero {
+    min-height: 650px;
+  }
+
+  .hero-content {
+    padding:
+      80px
+      18px
+      75px;
+  }
+
+  .hero-kicker {
+    font-size: 8px;
+  }
+
+  .hero h1 {
+    font-size: clamp(42px, 13vw, 58px);
+
+    line-height: 0.94;
+  }
+
+  .hero-description {
+    font-size: 12px;
+
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+  }
+
+  .hero-actions {
+    gap: 7px;
+  }
+
+  .hero-actions button {
+    height: 44px;
+
+    padding: 0 14px;
+
+    font-size: 11px;
+  }
+
+  .details-action {
+    display: none !important;
+  }
+
+  .hero-ai-insight {
+    margin-top: 20px;
+
+    padding: 11px 12px;
+  }
+
+  .hero-ai-text p {
+    font-size: 9px;
+  }
+
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero-background,
+  .hero-purple-glow,
+  .hero-orb,
+  .hero-ai-pulse,
+  .hero-loading-orb,
+  .hero-loading-line {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
