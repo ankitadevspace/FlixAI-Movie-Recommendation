@@ -1,6 +1,5 @@
 import React from 'react';
 import './Sidebar.css';
-import SearchBar from './SearchBar';
 
 const mainItems = [
   ['⌂', 'Home'],
@@ -15,25 +14,22 @@ const libraryItems = [
 ];
 
 function Sidebar({ active, onNavigate, onSearchFocus }) {
-  const handleSearchKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      onSearch?.(event.target.value.trim());
-    }
-  };
-
   return (
     <aside className="sidebar">
-      <div className="logo">FLIX<span>AI</span></div>
+      <div className="logo">
+        FLIX<span>AI</span>
+      </div>
 
       <div
         className="sidebar-search"
         onClick={() => onSearchFocus?.()}
       >
-      <span>⌕</span>
-      <span>Search</span>
+        <span>⌕</span>
+        <span>Search</span>
       </div>
 
       <p className="nav-label">EXPLORE</p>
+
       <nav>
         {mainItems.map(([icon, label]) => (
           <button
@@ -42,12 +38,14 @@ function Sidebar({ active, onNavigate, onSearchFocus }) {
             className={`nav-item ${active === label ? 'active' : ''}`}
             onClick={() => onNavigate?.(label)}
           >
-            <span>{icon}</span>{label}
+            <span>{icon}</span>
+            {label}
           </button>
         ))}
       </nav>
 
       <p className="nav-label library-label">LIBRARY</p>
+
       <nav>
         {libraryItems.map(([icon, label]) => (
           <button
@@ -56,7 +54,8 @@ function Sidebar({ active, onNavigate, onSearchFocus }) {
             className={`nav-item ${active === label ? 'active' : ''}`}
             onClick={() => onNavigate?.(label)}
           >
-            <span>{icon}</span>{label}
+            <span>{icon}</span>
+            {label}
           </button>
         ))}
       </nav>
