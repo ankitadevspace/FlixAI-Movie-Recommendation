@@ -343,7 +343,12 @@ if (app.Environment.IsDevelopment())
 // HTTPS
 // =====================================================
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection(); while uploading to render need to change to below
+
+if (!app.Environment.IsProduction())
+{
+    app.UseHttpsRedirection();
+}
 
 // =====================================================
 // CORS
