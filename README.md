@@ -2,6 +2,8 @@
 
 A full-stack movie discovery platform built with React and ASP.NET Core. This project is being evolved from a Netflix-style clone into an AI-powered recommendation and semantic search system.
 
+#FRONTEND LINK - https://flixai-movie-streaming-platform.netlify.app/
+
 ## Current stack
 
 - React 19
