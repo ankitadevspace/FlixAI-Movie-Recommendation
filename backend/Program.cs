@@ -42,7 +42,7 @@ builder.Services.AddMemoryCache();
 // REDIS / DISTRIBUTED CACHE
 // =====================================================
 
-var redisConnection =
+/*var redisConnection =
     builder.Configuration.GetConnectionString("Redis")
     ?? "localhost:6379";
 
@@ -50,7 +50,15 @@ builder.Services.AddStackExchangeRedisCache(options =>
 {
     options.Configuration = redisConnection;
     options.InstanceName = "FlixAI:";
-});
+});*/
+
+
+ // =====================================================
+ // DISTRIBUTED CACHE (temporary deployment fix)
+ // =====================================================
+
+builder.Services.AddDistributedMemoryCache();
+
 
 // =====================================================
 // JWT AUTHENTICATION
