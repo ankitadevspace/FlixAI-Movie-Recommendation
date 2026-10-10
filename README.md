@@ -3,6 +3,8 @@
 A full-stack movie discovery platform built with React and ASP.NET Core. This project is being evolved from a Netflix-style clone into an AI-powered recommendation and semantic search system.
 
 #FRONTEND LINK - https://flixai-movie-streaming-platform.netlify.app/
+#BACKEND LINK - https://flixai-movie-recommendation.onrender.com/
+#SWAGGER LINK - https://flixai-movie-recommendation.onrender.com/api/movies/trending
 
 ## Current stack
 
@@ -39,5 +41,8 @@ Example user-secrets command:
 dotnet user-secrets init
 dotnet user-secrets set "Tmdb:ApiKey" "YOUR_TMDB_API_KEY"
 ```
+Live Demo: FlixAI Frontend
+Backend API: Trending Movies Endpoint
+GitHub: FlixAI Repository
 
 For the React app, copy `.env.example` to `.env` if the API is running on a different address.
